@@ -6,9 +6,10 @@ namespace Laboratorio06
         private string Nombre;
         Persona Encargado;
 
-        public División(String nombre)
+        public División(String nombre, Persona encargado)
         {
             this.Nombre = nombre;
+            this.Encargado = encargado;
         }
 
         public string GetNombre()

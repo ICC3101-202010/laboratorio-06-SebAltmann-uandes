@@ -7,8 +7,9 @@ namespace Laboratorio06
     {
         List<Persona> Personal;
 
-        public Bloque(String nombre) : base(nombre)
+        public Bloque(String nombre, Persona encargado, List<Persona> personal) : base(nombre, encargado)
         {
+            this.Personal = personal;
         }
     }
 }

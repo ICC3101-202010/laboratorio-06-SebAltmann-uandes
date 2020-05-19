@@ -7,7 +7,7 @@ namespace Laboratorio06
     {
         List<Sección> Secciones;
 
-        public Departamento(String nombre) : base(nombre)
+        public Departamento(String nombre, Persona encargado) : base(nombre, encargado)
         {
         }
     }
