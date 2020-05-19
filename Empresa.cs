@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using System.Collections.Generic;
 
 namespace Laboratorio06
 {
@@ -8,6 +9,7 @@ namespace Laboratorio06
     {
         private string Nombre;
         private string RUT;
+        List<División> Divisiones;
 
         public Empresa(String nombre, String rut)
         {
