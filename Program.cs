@@ -8,10 +8,23 @@ namespace Laboratorio06
 {
     class MainClass
     {
+        public static void Save(Empresa empresa, IFormatter formatter)
+        {
+            Stream stream = new FileStream("empresa.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, empresa);
+            stream.Close();
+        }
+
+        public static void Load(IFormatter formatter)
+        {
+            Stream stream = new FileStream("empresa.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            Empresa empresa = (Empresa)formatter.Deserialize(stream);
+
+            stream.Close();
+        }
+
         public static void Main(string[] args)
         {
-            List<Empresa> Empresas = new List<Empresa>();
-
             IFormatter formatter = new BinaryFormatter();
 
             while (true)
@@ -31,11 +44,7 @@ namespace Laboratorio06
                 {
                     try
                     {
-                        Stream stream = new FileStream("empresa.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-                        Empresa empresa = (Empresa)formatter.Deserialize(stream);
-                        Empresas.Add(empresa);
-
-                        stream.Close();
+                        Load(formatter);
                     }
                     catch(FileNotFoundException FNFE)
                     {
@@ -53,9 +62,7 @@ namespace Laboratorio06
 
                         Empresa new_empresa = new Empresa(new_nombre_e, new_rut_e);
 
-                        Stream stream = new FileStream("empresa.bin", FileMode.Create, FileAccess.Write, FileShare.None);
-                        formatter.Serialize(stream, new_empresa);
-                        stream.Close();
+                        Save(new_empresa, formatter);
                     }
                 }
                 else if (response.ToUpper() == "N")
@@ -71,9 +78,7 @@ namespace Laboratorio06
 
                     Empresa new_empresa = new Empresa(new_nombre_e, new_rut_e);
 
-                    Stream stream = new FileStream("empresa.bin", FileMode.Create, FileAccess.Write, FileShare.None);
-                    formatter.Serialize(stream, new_empresa);
-                    stream.Close();
+                    Save(new_empresa, formatter);
                 }
 
                 return;
