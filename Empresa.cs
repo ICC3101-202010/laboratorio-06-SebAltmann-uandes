@@ -15,7 +15,7 @@ namespace Laboratorio06
             this.RUT = rut;
         }
 
-        public string GetName()
+        public string GetNombre()
         {
             return Nombre;
         }

@@ -3,8 +3,16 @@ namespace Laboratorio06
 {
     public class División
     {
-        public División()
+        private string Nombre;
+
+        public División(String nombre)
         {
+            this.Nombre = nombre;
+        }
+
+        public string GetNombre()
+        {
+            return Nombre;
         }
     }
 }
